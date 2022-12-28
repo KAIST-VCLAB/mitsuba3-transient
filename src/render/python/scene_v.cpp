@@ -92,7 +92,21 @@ MI_PY_EXPORT(Scene) {
                     result.append(py::cast(s));
             }
             return result;
-        }, D(Scene, shapes))
+            },
+            D(Scene, shapes))
+        .def("set_shapes",
+             [](Scene &scene, py::list py_shapes) {
+                 auto shapes = scene.shapes();
+                 shapes.clear();
+                 for (py::handle obj : py_shapes) {
+                     Shape *shape = obj.cast<Shape *>();
+                     shapes.push_back(shape);
+                 }
+             })
+        .def_method(Scene, remove_shape_at, "index"_a)
+        .def_method(Scene, add_shape, "shape"_a)
+        .def_method(Scene, remove_emitter_at, "index"_a)
+        .def_method(Scene, add_emitter, "emitter"_a)
         .def("integrator",
             [](Scene &scene) -> py::object {
                 Integrator *o = scene.integrator();

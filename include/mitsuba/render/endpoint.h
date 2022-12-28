@@ -316,8 +316,9 @@ public:
 
     /// Return the local space to world space transformation
     Transform4f world_transform() const {
-        return m_to_world.value();
-    }
+        return m_to_world.value(); }
+
+    void set_world_transform(Transform4f transform) { m_to_world = transform; }
 
     /**
      * \brief Does the method \ref sample_ray() require a uniformly distributed

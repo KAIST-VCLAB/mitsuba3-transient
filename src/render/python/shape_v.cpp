@@ -102,27 +102,33 @@ template <typename Ptr, typename Cls> void bind_shape_generic(Cls &cls) {
 MI_PY_EXPORT(Shape) {
     MI_PY_IMPORT_TYPES(Shape, Mesh)
 
-    auto shape = MI_PY_CLASS(Shape, Object)
-        .def("sample_position", &Shape::sample_position,
-            "time"_a, "sample"_a, "active"_a = true, D(Shape, sample_position))
-        .def("pdf_position", &Shape::pdf_position,
-            "ps"_a, "active"_a = true, D(Shape, pdf_position))
-        .def("sample_direction", &Shape::sample_direction,
-            "it"_a, "sample"_a, "active"_a = true, D(Shape, sample_direction))
-        .def("pdf_direction", &Shape::pdf_direction,
-            "it"_a, "ps"_a, "active"_a = true, D(Shape, pdf_direction))
-        .def("bbox", py::overload_cast<>(
-            &Shape::bbox, py::const_), D(Shape, bbox))
-        .def("bbox", py::overload_cast<ScalarUInt32>(
-            &Shape::bbox, py::const_), D(Shape, bbox, 2), "index"_a)
-        .def("bbox", py::overload_cast<ScalarUInt32, const ScalarBoundingBox3f &>(
-            &Shape::bbox, py::const_), D(Shape, bbox, 3), "index"_a, "clip"_a)
-        .def_method(Shape, surface_area)
-        .def_method(Shape, id)
-        .def_method(Shape, is_mesh)
-        .def_method(Shape, parameters_grad_enabled)
-        .def_method(Shape, primitive_count)
-        .def_method(Shape, effective_primitive_count);
+    auto shape =
+        MI_PY_CLASS(Shape, Object)
+            .def("sample_position", &Shape::sample_position, "time"_a,
+                 "sample"_a, "active"_a = true, D(Shape, sample_position))
+            .def("pdf_position", &Shape::pdf_position, "ps"_a,
+                 "active"_a = true, D(Shape, pdf_position))
+            .def("sample_direction", &Shape::sample_direction, "it"_a,
+                 "sample"_a, "active"_a = true, D(Shape, sample_direction))
+            .def("pdf_direction", &Shape::pdf_direction, "it"_a, "ps"_a,
+                 "active"_a = true, D(Shape, pdf_direction))
+            .def("bbox", py::overload_cast<>(&Shape::bbox, py::const_),
+                 D(Shape, bbox))
+            .def("bbox",
+                 py::overload_cast<ScalarUInt32>(&Shape::bbox, py::const_),
+                 D(Shape, bbox, 2), "index"_a)
+            .def("bbox",
+                 py::overload_cast<ScalarUInt32, const ScalarBoundingBox3f &>(
+                     &Shape::bbox, py::const_),
+                 D(Shape, bbox, 3), "index"_a, "clip"_a)
+            .def_method(Shape, surface_area)
+            .def_method(Shape, id)
+            .def_method(Shape, is_mesh)
+            .def_method(Shape, parameters_grad_enabled)
+            .def_method(Shape, primitive_count)
+            .def_method(Shape, effective_primitive_count)
+            .def_method(Shape, remove_emitter)
+            .def_method(Shape, set_emitter, "emitter"_a);
 
     bind_shape_generic<Shape *>(shape);
 

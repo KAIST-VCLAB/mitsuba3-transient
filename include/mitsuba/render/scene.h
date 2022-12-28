@@ -470,6 +470,21 @@ public:
     /// Return the list of shapes
     const std::vector<ref<Shape>> &shapes() const { return m_shapes; }
 
+    /// Set the list of shapes
+    void set_shapes(std::vector<ref<Shape>> shapes) { m_shapes = shapes; }
+
+    void remove_shape_at(int index) {
+        m_shapes.erase(m_shapes.begin() + index);
+    }
+
+    void add_shape(ref<Shape> shape) { m_shapes.push_back(shape); }
+
+    void remove_emitter_at(int index) {
+        m_emitters.erase(m_emitters.begin() + index);
+    }
+
+    void add_emitter(ref<Emitter> emitter) { m_emitters.push_back(emitter); }
+
     /// Return the scene's integrator
     Integrator* integrator() { return m_integrator; }
     /// Return the scene's integrator
