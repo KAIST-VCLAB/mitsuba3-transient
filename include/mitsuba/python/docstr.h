@@ -2594,6 +2594,8 @@ static const char *__doc_mitsuba_Endpoint_traverse = R"doc(//! @})doc";
 
 static const char *__doc_mitsuba_Endpoint_world_transform = R"doc(Return the local space to world space transformation)doc";
 
+static const char *__doc_mitsuba_Endpoint_set_world_transform = R"doc(Set the local space to world space transformation)doc";
+
 static const char *__doc_mitsuba_FileResolver =
 R"doc(Simple class for resolving paths on Linux/Windows/Mac OS
 
@@ -6693,6 +6695,16 @@ static const char *__doc_mitsuba_Scene_shapes = R"doc(Return the list of shapes)
 
 static const char *__doc_mitsuba_Scene_shapes_2 = R"doc(Return the list of shapes)doc";
 
+static const char *__doc_mitsuba_Scene_set_shapes = R"doc(Set the list of shapes)doc";
+
+static const char *__doc_mitsuba_Scene_remove_shape_at = R"doc(Remove a shape from the list of shapes)doc";
+
+static const char *__doc_mitsuba_Scene_add_shape = R"doc(Add a shape in the list of shapes)doc";
+
+static const char *__doc_mitsuba_Scene_remove_emitter_at = R"doc(Remove a emitter from the list of emitters)doc";
+
+static const char *__doc_mitsuba_Scene_add_emitter = R"doc(Add a emitter in the list of emitters)doc";
+
 static const char *__doc_mitsuba_Scene_shapes_dr = R"doc(Return the list of shapes as an Dr.Jit array)doc";
 
 static const char *__doc_mitsuba_Scene_shapes_grad_enabled =
@@ -7071,6 +7083,10 @@ static const char *__doc_mitsuba_Shape_embree_geometry = R"doc(Return the Embree
 static const char *__doc_mitsuba_Shape_emitter = R"doc(Return the area emitter associated with this shape (if any))doc";
 
 static const char *__doc_mitsuba_Shape_emitter_2 = R"doc(Return the area emitter associated with this shape (if any))doc";
+
+static const char *__doc_mitsuba_Shape_remove_emitter = R"doc(Remove the area emitter associated with this shape)doc";
+
+static const char *__doc_mitsuba_Shape_set_emitter = R"doc(Set the area emitter associated with this shape)doc";
 
 static const char *__doc_mitsuba_Shape_eval_attribute =
 R"doc(Evaluate a specific shape attribute at the given surface interaction.

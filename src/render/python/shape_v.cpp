@@ -146,7 +146,9 @@ MI_PY_EXPORT(Shape) {
         .def_method(Shape, is_mesh)
         .def_method(Shape, parameters_grad_enabled)
         .def_method(Shape, primitive_count)
-        .def_method(Shape, effective_primitive_count);
+            .def_method(Shape, effective_primitive_count)
+            .def_method(Shape, remove_emitter)
+            .def_method(Shape, set_emitter, "emitter"_a);
 
     bind_shape_generic<Shape *>(shape);
 

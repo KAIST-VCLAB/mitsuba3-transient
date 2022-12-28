@@ -406,6 +406,10 @@ public:
     /// Return the area emitter associated with this shape (if any)
     Emitter *emitter(Mask /*unused*/ = true) { return m_emitter.get(); }
 
+    void remove_emitter() { m_emitter = NULL; }
+
+    void set_emitter(ref<Emitter> emitter) { m_emitter = emitter; }
+
     /// Is this shape also an area sensor?
     bool is_sensor() const { return (bool) m_sensor; }
 
