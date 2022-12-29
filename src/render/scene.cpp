@@ -67,10 +67,7 @@ MI_VARIANT Scene<Float, Spectrum>::Scene(const Properties &props) {
     for (Sensor *sensor: m_sensors)
         sensor->set_scene(this);
 
-    if constexpr (dr::is_cuda_v<Float>)
-        accel_init_gpu(props);
-    else
-        accel_init_cpu(props);
+    // accel_init(props);
 
     if (!m_emitters.empty()) {
         // Inform environment emitters etc. about the scene bounds
@@ -88,6 +85,14 @@ MI_VARIANT Scene<Float, Spectrum>::Scene(const Properties &props) {
 
     m_shapes_grad_enabled = false;
 }
+
+MI_VARIANT void Scene<Float, Spectrum>::accel_init(const Properties &props) {
+    if constexpr (dr::is_cuda_v<Float>)
+        accel_init_gpu(props);
+    else
+        accel_init_cpu(props);
+}
+
 
 MI_VARIANT Scene<Float, Spectrum>::~Scene() {
     if constexpr (dr::is_cuda_v<Float>)

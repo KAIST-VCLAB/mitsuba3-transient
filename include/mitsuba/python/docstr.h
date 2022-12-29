@@ -6352,6 +6352,8 @@ static const char *__doc_mitsuba_Scene_m_shapes_grad_enabled = R"doc()doc";
 
 static const char *__doc_mitsuba_Scene_parameters_changed = R"doc(Update internal state following a parameter update)doc";
 
+static const char *__doc_mitsuba_Scene_accel_init = R"doc(Init scene accelerator)doc";
+
 static const char *__doc_mitsuba_Scene_pdf_emitter =
 R"doc(Evaluate the discrete probability of the sample_emitter() technique
 for the given a emitter index.)doc";

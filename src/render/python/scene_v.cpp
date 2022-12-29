@@ -44,6 +44,7 @@ MI_PY_EXPORT(Scene) {
     MI_PY_IMPORT_TYPES(Scene, Integrator, SamplingIntegrator, MonteCarloIntegrator, Sensor)
     MI_PY_CLASS(Scene, Object)
         .def(py::init<const Properties>())
+        .def_method(Scene, accel_init, "props"_a = Properties())
         .def("ray_intersect_preliminary",
              py::overload_cast<const Ray3f &, Mask, Mask>(&Scene::ray_intersect_preliminary, py::const_),
              "ray"_a, "coherent"_a = false, "active"_a = true, D(Scene, ray_intersect_preliminary))

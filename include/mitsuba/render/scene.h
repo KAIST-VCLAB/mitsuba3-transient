@@ -41,6 +41,9 @@ public:
     /// Instantiate a scene from a \ref Properties object
     Scene(const Properties &props);
 
+    /// Init scene accelerator
+    void accel_init(const Properties &props);
+
     // =============================================================
     //! @{ \name Ray tracing
     // =============================================================
